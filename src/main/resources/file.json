@@ -1,3 +1,21 @@
 {
-  "id": "a1"
+  "id": "a1",
+  "ingredients": [
+    {
+      "fats": 5,
+      "proteins": 10,
+      "carbohydrates": 40
+    }
+  ],
+  "shop": [
+    {
+      "name": "green",
+      "location": "some12"
+    },
+    {
+      "name": "red",
+      "location": "some13"
+    }
+  ],
+  "type": "some type"
 }

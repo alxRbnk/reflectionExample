@@ -1,0 +1,24 @@
+{
+  "id": "123",
+  "firstName": "Bob",
+  "lastName": "Smith",
+  "dateBirth": "2003-11-03",
+  "orders": [
+    {
+      "id": "22",
+      "products": [
+        {
+          "id": "33",
+          "name": "phone",
+          "price": 100.0
+        },
+        {
+          "id": "44",
+          "name": "car",
+          "price": 100.0
+        }
+      ],
+      "createDate": "2023-10-24T17:50:30.5470749+03:00"
+    }
+  ]
+}
