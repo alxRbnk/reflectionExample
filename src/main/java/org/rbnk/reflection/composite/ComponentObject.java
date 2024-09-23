@@ -4,30 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ComponentObject implements Component {
-    private final String type;
     private final Map<String, Component> components = new HashMap<>();
 
-    public ComponentObject(String type) {
-        this.type = type;
-    }
-
-    @Override
-    public String collect() {
-        StringBuilder collectedText = new StringBuilder(type + ": {");
-        components.forEach((key, component) -> collectedText.append("\n  ")
-                .append(key)
-                .append(": ")
-                .append(component.collect()));
-        collectedText.append("\n}");
-        return collectedText.toString();
+    public void add(String key, Component component) {
+        components.put(key, component);
     }
 
     @Override
     public void add(Component component) {
-        components.put(component.getTextComponent()
-                .keySet().stream()
-                .findFirst()
-                .orElse("unknown"), component);
     }
 
     @Override
@@ -45,7 +29,17 @@ public class ComponentObject implements Component {
         return components;
     }
 
-    public String getType() {
-        return type;
+    @Override
+    public String collect() {
+        StringBuilder json = new StringBuilder("{");
+        for (Map.Entry<String, Component> entry : components.entrySet()) {
+            json.append("\"").append(entry.getKey()).append("\": ")
+                    .append(entry.getValue().collect()).append(", ");
+        }
+        if (json.length() > 1) {
+            json.delete(json.length() - 2, json.length());
+        }
+        json.append("}");
+        return json.toString();
     }
 }
